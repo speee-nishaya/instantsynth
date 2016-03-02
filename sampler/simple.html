@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+<head>
+  <style>
+    button {
+      width: 30px;
+      height: 100px;
+    }
+  </style>
+</head>
+<body>
+  <div id="keys"></div>
+  <script src="simple.js"></script>
+  <script>
+  'use strict';
+  var sampler;
+  window.onload = function() {
+    sampler = new SimpleSampler('../sound/FM_C3.mp3');
+    let buttons = '';
+    for(let i=-12; i<=12; i++) {
+      buttons += `<button onclick="sampler.play(${i})">${i}</button>`;
+    }
+    document.querySelector('#keys').innerHTML = buttons;
+  }
+  </script>
+</body>
+</html>
