@@ -11,13 +11,6 @@ class Synth {
   }
 
   /**
-   * @param [boolean] enable trueならエコーon, falseならoff
-   */
-  fx(enable) {
-    //
-  }
-
-  /**
    * @param [number] key C3を0とするキー
    * @param [number] duration 音の持続秒数
    */
