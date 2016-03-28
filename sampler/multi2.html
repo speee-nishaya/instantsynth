@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+<head>
+  <style>
+    button {
+      width: 150px;
+      height: 150px;
+    }
+  </style>
+</head>
+<body>
+  <div id="keys"></div>
+  press num keys(1..4)
+  <script src="multi2.js"></script>
+  <script>
+  'use strict';
+  var kit;
+
+  window.onload = function() {
+    kit = new DrumKit(2);
+    kit.assign(0, '../sound/kick.mp3', 0);
+    kit.assign(1, '../sound/snare.mp3', 3);
+    kit.assign(2, '../sound/close_hh.mp3', 7);
+    kit.assign(3, '../sound/open_hh.mp3', 12);
+
+    let buttons =
+    `<button onclick="kit.play(0)">[1] kick</button>` +
+    `<button onclick="kit.play(1)">[2] snare</button>` +
+    `<button onclick="kit.play(2)">[3] close hh</button>` +
+    `<button onclick="kit.play(3)">[4] open hh</button>`;
+
+    document.querySelector('#keys').innerHTML = buttons;
+
+    document.querySelector('body').onkeydown = (event) => {
+      if (event.keyCode >= 49 && event.keyCode <= 52) {
+        kit.play(event.keyCode - 49);
+      }
+    }
+  }
+  </script>
+</body>
+</html>
