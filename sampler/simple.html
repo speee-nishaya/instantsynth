@@ -21,6 +21,12 @@
       buttons += `<button onclick="sampler.play(${i})">${i}</button>`;
     }
     document.querySelector('#keys').innerHTML = buttons;
+
+    document.querySelector('body').onkeydown = (event) => {
+      if (event.keyCode >= 49 && event.keyCode <= 58) {
+        sampler.play(event.keyCode - 49);
+      }
+    }
   }
   </script>
 </body>
