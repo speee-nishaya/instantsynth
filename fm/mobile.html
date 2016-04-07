@@ -7,9 +7,8 @@
   var fm;
   window.onload = function() {
     fm = new FMSynth;
-    document.querySelector('#pad').onmousedown = function(){
-      fm.play(440);
-    }
+    fm.play(440);
+    
     window.addEventListener('deviceorientation', function(e){
       var ratio = ((e.gamma+90)/180) * 3;
       fm.setModRatio(ratio);
