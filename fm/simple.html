@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+<body>
+  <div id="pad" style="top: 0px; left: 0px; position: absolute; width: 300px; height: 300px; border: 1px solid #f00;"></div>
+  <script src="fm.js"></script>
+  <script>
+  var fm;
+  window.onload = function() {
+    fm = new FMSynth;
+    document.querySelector('#pad').onmousedown = function(){
+      fm.play(440);
+    }
+    document.querySelector('#pad').onmousemove = function(e){
+      var ratio = (e.clientY/300) * 3;
+      fm.setModRatio(ratio);
+
+      var freq = Math.pow(2, (e.clientX/300) * 2) * 220;
+      fm.setFrequency(freq);
+    }
+  }
+  </script>
+</body>
+</html>
