@@ -1,15 +1,12 @@
 'use strict'
 
-
 class DrumKit {
   constructor(numPads) {
-    console.log("dk new");
     this.pads = new Array(numPads);
   }
 
-  assign(slot, sampleFile, key) {
-    console.log(`assign ${slot} ${sampleFile} ${key}`);
-    this.pads[slot] = {
+  assign(padNumber, sampleFile, key) {
+    this.pads[padNumber] = {
       sampler: new SimpleSampler(sampleFile),
       key: key
     };
