@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+<body>
+  <script src="lpf.js"></script>
+
+  <div id="pad" style="position: absolute; top: 0px; width: 300px; height: 300px; border: 1px solid #f00;"></div>
+  <div style="position: absolute; top: 300px;">
+    <button id="play">Play</button>
+    <button id="stop">Stop</button>
+  </div>
+  <script>
+  var s;
+  var c=4;
+  var intervalTimer;
+  window.onload = function() {
+    s = new Synth;
+    document.querySelector('#play').onclick = function() {
+      intervalTimer = setInterval(function(){
+        if (c % 8 == 0) {
+          s.playTone(-30, 0.14);
+        } else if(c % 8 >= 2) {
+          s.playTone(-30, 0.07);
+        }
+        c++;
+      }, 60000/(130*4));
+    }
+    document.querySelector('#stop').onclick = function() {
+      clearInterval(intervalTimer);
+    }
+    document.querySelector('#pad').onmousemove = function(e){
+      var freq = (e.clientY/300) * 6000;
+      s.filter.frequency.value = freq;
+
+      var q = (e.clientX/300) * 50;
+      s.filter.Q.value = q;
+
+      // s.setDistortionCurve(e.clientX/300 * 40000);
+    }
+  }
+  </script>
+</body>
+</html>
